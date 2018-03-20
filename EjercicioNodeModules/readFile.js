@@ -9,7 +9,7 @@ const fs_readfile = util.promisify(fs.readFile);
 
 
 function getPackageJson(nameFolder){
-    const file = `./node_modules/${nameFolder}/package.json`;
+    const file = `../node_modules/${nameFolder}/package.json`;
     return fs_readfile(file, 'utf-8')
     .then(convertStringToJSON)
     .then(parseData)

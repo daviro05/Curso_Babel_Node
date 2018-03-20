@@ -11,7 +11,7 @@ const fs_readFolder = util.promisify(fs.readdir);
 // Cogemos la funcion de readFile.js que hemos exportado anteriormente.
 const getPackageJson = require('./readFile');
 
-const folder = './node_modules/';
+const folder = '../node_modules/';
 
 function getDir(){
     return getListFolder()
