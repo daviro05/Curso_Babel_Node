@@ -3,7 +3,7 @@
 const _ = require('lodash');
 
 const fs = require('fs');
-// Libreria de utilidad de node. 
+// Libreria de utilidad de node.
 const util = require('util');
 // Convierte una funcion que recibe un callback en una promesa.
 const fs_readFolder = util.promisify(fs.readdir);
@@ -13,35 +13,33 @@ const getPackageJson = require('./readFile');
 
 const folder = '../node_modules/';
 
-function getDir(){
-    return getListFolder()
+function getDir() {
+  return getListFolder()
     .then(getPackageFromList)
     .then(filterPackagesNull)
-    .then((data) => console.log(data))   
+    .then(data => console.log(data));
 }
 
-function filterPackagesNull(array){
-    return _.filter(array, (element) => element !== null);
+function filterPackagesNull(array) {
+  return _.filter(array, element => element !== null);
 }
 
-function getListFolder(){
-    return fs_readFolder(folder);
+function getListFolder() {
+  return fs_readFolder(folder);
 }
 
-function getPackageFromList(list){
-    //console.log(list);
-    const promises = [];
-    list.forEach((element) => {
-       promises.push(resolverVersion(element));
-    });
-    return Promise.all(promises);
+function getPackageFromList(list) {
+  // console.log(list);
+  const promises = [];
+  list.forEach((element) => {
+    promises.push(resolverVersion(element));
+  });
+  return Promise.all(promises);
 }
 
-function resolverVersion(folder){
-    return getPackageJson(folder)
-    .then((mi_package) => {
-        return _.get(mi_package, 'version');
-    });
+function resolverVersion(folder) {
+  return getPackageJson(folder)
+    .then(mi_package => _.get(mi_package, 'version'));
 }
 
 

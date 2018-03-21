@@ -1,9 +1,10 @@
 const fs = require('fs');
 const P = require('bluebird');
 const util = require('util');
+
 const readFile = util.promisify(fs.readFile);
 
-var request = require('request');
+const request = require('request');
 
 /* function leerFichero(fichero){
     return new Promise((resolve, reject) => {
@@ -41,4 +42,4 @@ catch(console.log); */
 leerFichero('./fichero.txt'); */
 
 
-//console.log(leerFichero('./fichero.txt'));
+// console.log(leerFichero('./fichero.txt'));

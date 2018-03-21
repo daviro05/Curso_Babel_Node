@@ -1,31 +1,30 @@
 // Código con callbacks
 
 
-
-function callback(msg){
-    console.log(msg);
-    return msg;
+function callback(msg) {
+  console.log(msg);
+  return msg;
 }
 
-function hola(cb){
-    console.log(cb('hola'));
+function hola(cb) {
+  console.log(cb('hola'));
 }
-//hola(callback);
+// hola(callback);
 
-function sumaCB(cb,a,b){
-setTimeout(() => {
-    cb(a+b);
-});
+function sumaCB(cb, a, b) {
+  setTimeout(() => {
+    cb(a + b);
+  });
 }
 
 // Código con promesas
 
-function suma(a,b){
-    return new Promise((resolve) => {
-        setTimeout( () => {
-            resolve(a+b);
-        }, 2000);
-    });
+function suma(a, b) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(a + b);
+    }, 2000);
+  });
 }
 
 
@@ -51,9 +50,9 @@ function suma(a,b){
     console.log(result);
 }) */
 
-const array = [[2,3], [4,5]];
+const array = [[2, 3], [4, 5]];
 const promesas = [];
-array.forEach((par) => promesas.push(suma(par[0], par[1])))
+array.forEach(par => promesas.push(suma(par[0], par[1])));
 
 /* console.log(promesas);
 promesas.forEach((promesa) => {
@@ -63,8 +62,6 @@ promesas.forEach((promesa) => {
 
 /* P.map(promesas, (resultado) => resultado * 20)
 .then(console.log); */
-
-
 
 
 /* const array2 = [[2,3], [4,5]];
@@ -78,13 +75,13 @@ function map(result){
    });
 } */
 
-function hola(){
-    this.msg =  'hola'; // El this se refiere a la propia funcion.
-    return hola2(this);
+function hola() {
+  this.msg = 'hola'; // El this se refiere a la propia funcion.
+  return hola2(this);
 }
 
 const hola2 = (self) => {
-    console.log(self.msg);
-}
+  console.log(self.msg);
+};
 
 hola();
