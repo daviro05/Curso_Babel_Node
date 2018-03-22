@@ -28,7 +28,11 @@ function getCachePackage(req, res, next) {
 
 router.route('/')
   .get(packageCtrl.list)
-  .post(packageCtrl.create);
+  .post((req, res, next) => {
+    packageCtrl.create(req.body)
+      .then(res.json.bind(res))
+      .catch(next);
+  });
 
 router.route('/:name')
   .get(
